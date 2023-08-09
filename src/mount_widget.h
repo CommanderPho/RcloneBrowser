@@ -10,6 +10,7 @@ public:
   MountWidget(QProcess *process, const QString &remote, const QString &folder,
               QWidget *parent = nullptr);
   ~MountWidget();
+  void appendOutputText(const QString &text);
 
 public slots:
   void cancel();

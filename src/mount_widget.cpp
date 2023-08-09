@@ -77,6 +77,11 @@ MountWidget::MountWidget(QProcess *process, const QString &remote,
   ui.showDetails->setText("Mounted");
 }
 
+void MountWidget::appendOutputText(const QString &text) {
+    ui.output->appendPlainText(text);
+}
+
+
 MountWidget::~MountWidget() {}
 
 void MountWidget::cancel() {

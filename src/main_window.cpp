@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "main_window.h"
 #include "job_options.h"
 #include "job_widget.h"
@@ -1158,8 +1159,15 @@ void MainWindow::addMount(const QString &remote, const QString &folder) {
   }
   args << remote << folder;
 
+  // Log the command-line equivalent
+  widget->appendOutputText("Mount Command Line:");
+  widget->appendOutputText(args.join(" "));
+  qDebug() << "Mount Command Line:" << args;
+
   UseRclonePassword(mount);
   mount->start(GetRclone(), args, QIODevice::ReadOnly);
+
+
 }
 
 void MainWindow::addStream(const QString &remote, const QString &stream) {
@@ -1218,7 +1226,7 @@ void MainWindow::addStream(const QString &remote, const QString &stream) {
   QStringList arguments;
   // Populate arguments as needed
   player->start(stream, arguments, QProcess::ReadOnly);
-  
+
   UseRclonePassword(rclone);
   rclone->start(GetRclone(),
                 QStringList() << "cat" << GetRcloneConf() << remote,
