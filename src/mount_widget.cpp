@@ -82,6 +82,7 @@ void MountWidget::appendOutputText(const QString &text) {
 }
 
 
+
 MountWidget::~MountWidget() {}
 
 void MountWidget::cancel() {
